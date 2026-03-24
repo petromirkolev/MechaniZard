@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mechanizard</title>
+    <script type="module" src="./src/main.ts"></script>
+  </head>
+  <body>
+    <div id="app" data-testid="app-root">
+      <!-- TOPBAR -->
+      <header class="topbar" data-testid="topbar">
+        <div class="brand" data-testid="brand-app">
+          <img
+            src="./src/assets/mechanizard logo.png"
+            alt="Mechanizard logo"
+            class="brand-logo"
+            data-testid="logo-app" />
+          <div>
+            <h1 data-testid="title-app">Mechanizard</h1>
+            <p class="subtitle" data-testid="subtitle-app">
+              Keep your bike running like magic
+            </p>
+          </div>
+        </div>
+
+        <nav class="topnav desktop-only" data-testid="nav-main">
+          <a href="#garage" class="nav-link active">Garage</a>
+          <a href="#maintenance" class="nav-link">Maintenance</a>
+          <a href="#repairs" class="nav-link">Repairs</a>
+          <a href="#guides" class="nav-link">Guides</a>
+          <a href="#profile" class="nav-link">Profile</a>
+        </nav>
+
+        <div class="topbar-actions desktop-only" data-testid="topbar-actions">
+          <button type="button" class="ghost" data-testid="btn-logout-topbar">
+            Logout
+          </button>
+        </div>
+
+        <button
+          type="button"
+          class="menu-toggle mobile-only"
+          data-testid="btn-mobile-menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu">
+          ☰
+        </button>
+
+        <div
+          id="mobile-menu"
+          class="mobile-menu is-hidden"
+          data-testid="mobile-menu">
+          <nav class="mobile-nav">
+            <a href="#garage" class="nav-link active">Garage</a>
+            <a href="#maintenance" class="nav-link">Maintenance</a>
+            <a href="#repairs" class="nav-link">Repairs</a>
+            <a href="#guides" class="nav-link">Guides</a>
+            <a href="#profile" class="nav-link">Profile</a>
+          </nav>
+
+          <button type="button" class="ghost mobile-logout">Logout</button>
+        </div>
+      </header>
+
+      <!-- AUTH VIEW -->
+      <main class="auth-view is-hidden" data-testid="page-auth">
+        <section class="auth-shell auth-shell-split" data-testid="auth-shell">
+          <div class="auth-hero auth-hero-left" data-testid="auth-hero">
+            <div class="brand brand-large" data-testid="brand-auth">
+              <img
+                src="./src/assets/mechanizard logo.png"
+                alt="Mechanizard logo"
+                class="brand-logo"
+                data-testid="logo-auth" />
+              <div>
+                <h1 data-testid="title-auth">Mechanizard</h1>
+                <p class="subtitle" data-testid="subtitle-auth">
+                  Keep your bike running like magic
+                </p>
+              </div>
+            </div>
+
+            <div class="hero-copy" data-testid="auth-hero-copy">
+              <h2 data-testid="auth-hero-heading">
+                A practical workspace for the hobbyist motorcycle owner
+              </h2>
+              <br />
+              <p data-testid="auth-hero-text">
+                Log every maintenance record, keep complete service history,
+                track all repairs, and get clear, bike-specific maintenance and
+                repair guides. All in one powerful app.
+              </p>
+            </div>
+          </div>
+
+          <section
+            class="auth-card-wrap auth-card-side"
+            data-testid="auth-card-wrap">
+            <div class="auth-tabs" data-testid="auth-tabs">
+              <button
+                type="button"
+                class="auth-tab active"
+                data-testid="tab-login"
+                data-action="show-login-form">
+                Login
+              </button>
+              <button
+                type="button"
+                class="auth-tab"
+                data-testid="tab-register"
+                data-action="show-register-form">
+                Register
+              </button>
+            </div>
+
+            <form class="card form-card auth-card" data-testid="form-login">
+              <h3 data-testid="heading-login">Login</h3>
+
+              <label for="login-email">
+                Email
+                <input
+                  id="login-email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  data-testid="input-login-email" />
+              </label>
+
+              <label for="login-password">
+                Password
+                <input
+                  id="login-password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter password"
+                  autocomplete="current-password"
+                  data-testid="input-login-password" />
+              </label>
+
+              <div data-testid="message-login-error"></div>
+
+              <button type="button" data-testid="btn-login" data-action="login">
+                Login
+              </button>
+            </form>
+
+            <form
+              class="card form-card auth-card is-hidden"
+              data-testid="form-register">
+              <h3 data-testid="heading-register">Create account</h3>
+
+              <label for="register-email">
+                Email
+                <input
+                  id="register-email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  data-testid="input-register-email" />
+              </label>
+
+              <label for="register-password">
+                Password
+                <input
+                  id="register-password"
+                  name="password"
+                  type="password"
+                  placeholder="Create password"
+                  autocomplete="new-password"
+                  data-testid="input-register-password" />
+              </label>
+
+              <label for="register-confirm-password">
+                Confirm password
+                <input
+                  id="register-confirm-password"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Repeat password"
+                  autocomplete="new-password"
+                  data-testid="input-register-confirm-password" />
+              </label>
+
+              <div data-testid="message-register-error"></div>
+
+              <button
+                type="button"
+                data-testid="btn-register"
+                data-action="register">
+                Create account
+              </button>
+            </form>
+          </section>
+        </section>
+      </main>
+
+      <!-- APP VIEW -->
+      <div class="app-view">
+        <!-- GARAGE -->
+        <main
+          class="page-shell is-hidden"
+          id="garage"
+          data-testid="shell-garage">
+          <section class="panel" data-testid="panel-garage">
+            <div class="section-row section-row--page">
+              <div>
+                <h2>Your Garage</h2>
+                <p class="muted">2 motorcycles</p>
+              </div>
+
+              <button
+                type="button"
+                data-action="open-add-bike-modal"
+                data-testid="btn-open-add-bike-modal">
+                Add Motorcycle
+              </button>
+            </div>
+
+            <div class="garage-grid" data-testid="garage-grid">
+              <article
+                class="card garage-bike-card is-clickable"
+                data-testid="garage-bike-card-1">
+                <button
+                  type="button"
+                  class="garage-bike-card__link"
+                  data-action="open-bike-maintenance">
+                  <div class="garage-bike-card__content">
+                    <div>
+                      <h3>Honda</h3>
+                      <p class="muted">2021 Honda Rebel</p>
+                    </div>
+
+                    <span class="odo-pill">1000 km</span>
+                  </div>
+                </button>
+
+                <div class="garage-bike-card__footer">
+                  <button
+                    type="button"
+                    class="icon-action icon-action--edit"
+                    aria-label="Edit bike">
+                    <img src="./src/assets/icons/icon-edit-glyph.svg" alt="" />
+                  </button>
+
+                  <button
+                    type="button"
+                    class="icon-action icon-action--log"
+                    aria-label="Log current odometer">
+                    <img
+                      src="./src/assets/icons/icon-log-odo-glyph.svg"
+                      alt="" />
+                  </button>
+
+                  <button
+                    type="button"
+                    class="icon-action icon-action--delete"
+                    aria-label="Delete bike">
+                    <img
+                      src="./src/assets/icons/icon-delete-glyph.svg"
+                      alt="" />
+                  </button>
+                </div>
+              </article>
+
+              <article
+                class="card garage-bike-card is-clickable"
+                data-testid="garage-bike-card-1">
+                <button
+                  type="button"
+                  class="garage-bike-card__link"
+                  data-action="open-bike-maintenance">
+                  <div class="garage-bike-card__content">
+                    <div>
+                      <h3>Honda</h3>
+                      <p class="muted">2021 Honda Rebel</p>
+                    </div>
+
+                    <span class="odo-pill">1000 km</span>
+                  </div>
+                </button>
+
+                <div class="garage-bike-card__footer">
+                  <button
+                    type="button"
+                    class="icon-action icon-action--edit"
+                    aria-label="Edit bike">
+                    <img src="./src/assets/icons/icon-edit-glyph.svg" alt="" />
+                  </button>
+
+                  <button
+                    type="button"
+                    class="icon-action icon-action--log"
+                    aria-label="Log current odometer">
+                    <img
+                      src="./src/assets/icons/icon-log-odo-glyph.svg"
+                      alt="" />
+                  </button>
+
+                  <button
+                    type="button"
+                    class="icon-action icon-action--delete"
+                    aria-label="Delete bike">
+                    <img
+                      src="./src/assets/icons/icon-delete-glyph.svg"
+                      alt="" />
+                  </button>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- MAINTENANCE -->
+        <main
+          class="page-shell"
+          id="maintenance"
+          data-testid="shell-maintenance">
+          <section
+            class="panel maintenance-panel"
+            data-testid="panel-maintenance">
+            <div class="maintenance-top">
+              <div class="maintenance-top__back">
+                <button
+                  type="button"
+                  class="back-link ghost"
+                  data-action="go-back-garage">
+                  ← Back to Garage
+                </button>
+              </div>
+
+              <div class="maintenance-top__grid">
+                <article
+                  class="card maintenance-top-card maintenance-top-card--bike"
+                  data-testid="bike-summary-card">
+                  <div class="maintenance-top-card__body">
+                    <div>
+                      <h3>Honda</h3>
+                      <p class="muted">Rebel</p>
+                    </div>
+
+                    <div class="maintenance-top-card__bike-actions">
+                      <span class="odo-pill">1000 km</span>
+
+                      <div class="bike-card-actions">
+                        <button
+                          type="button"
+                          class="icon-action icon-action--edit"
+                          aria-label="Edit bike">
+                          <img
+                            src="./src/assets/icons/icon-edit-glyph.svg"
+                            alt="" />
+                        </button>
+
+                        <button
+                          type="button"
+                          class="icon-action icon-action--log"
+                          aria-label="Log current odometer">
+                          <img
+                            src="./src/assets/icons/icon-log-odo-glyph.svg"
+                            alt="" />
+                        </button>
+
+                        <button
+                          type="button"
+                          class="icon-action icon-action--delete"
+                          aria-label="Delete bike">
+                          <img
+                            src="./src/assets/icons/icon-delete-glyph.svg"
+                            alt="" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="card maintenance-top-card maintenance-top-card--stat">
+                  <div class="stat-card__icon stat-card__icon--danger">
+                    <img
+                      src="./src/assets/icons/icon-overdue-glyph.svg"
+                      alt="" />
+                  </div>
+                  <strong>0</strong>
+                  <span class="muted">Overdue</span>
+                </article>
+
+                <article
+                  class="card maintenance-top-card maintenance-top-card--stat">
+                  <div class="stat-card__icon stat-card__icon--warn">
+                    <img
+                      src="./src/assets/icons/icon-due-soon-glyph.svg"
+                      alt="" />
+                  </div>
+                  <strong>0</strong>
+                  <span class="muted">Due Soon</span>
+                </article>
+
+                <article
+                  class="card maintenance-top-card maintenance-top-card--stat">
+                  <div class="stat-card__icon stat-card__icon--ok">
+                    <img
+                      src="./src/assets/icons/icon-on-track-glyph.svg"
+                      alt="" />
+                  </div>
+                  <strong>0</strong>
+                  <span class="muted">On Track</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-row section-row--page">
+              <h3>Maintenance Items</h3>
+
+              <div class="view-switch">
+                <button class="switch-btn active" type="button">Current</button>
+                <button class="switch-btn" type="button">History</button>
+              </div>
+            </div>
+
+            <div
+              class="maintenance-card-grid"
+              data-testid="maintenance-current-list">
+              <article class="card maintenance-item-card">
+                <h3>Oil &amp; Filter Change</h3>
+                <p class="muted">Engine oil and filter replacement</p>
+
+                <div class="maintenance-lines">
+                  <p><strong>Last:</strong> Never logged</p>
+                  <p><strong>Due:</strong> Not scheduled yet</p>
+                </div>
+
+                <div class="job-actions">
+                  <button
+                    type="button"
+                    data-action="open-log-maintenance-modal">
+                    Log Service
+                  </button>
+                  <button
+                    type="button"
+                    class="ghost"
+                    data-action="open-schedule-maintenance-modal">
+                    Schedule
+                  </button>
+                </div>
+              </article>
+
+              <article class="card maintenance-item-card">
+                <h3>Coolant Change</h3>
+                <p class="muted">Engine coolant replacement</p>
+
+                <div class="maintenance-lines">
+                  <p><strong>Last:</strong> Never logged</p>
+                  <p><strong>Due:</strong> Not scheduled yet</p>
+                </div>
+
+                <div class="job-actions">
+                  <button
+                    type="button"
+                    data-action="open-log-maintenance-modal">
+                    Log Service
+                  </button>
+                  <button
+                    type="button"
+                    class="ghost"
+                    data-action="open-schedule-maintenance-modal">
+                    Schedule
+                  </button>
+                </div>
+              </article>
+
+              <article class="card maintenance-item-card">
+                <h3>Brake Fluid Change</h3>
+                <p class="muted">Brake fluid flush and replacement</p>
+
+                <div class="maintenance-lines">
+                  <p><strong>Last:</strong> Never logged</p>
+                  <p><strong>Due:</strong> Not scheduled yet</p>
+                </div>
+
+                <div class="job-actions">
+                  <button
+                    type="button"
+                    data-action="open-log-maintenance-modal">
+                    Log Service
+                  </button>
+                  <button
+                    type="button"
+                    class="ghost"
+                    data-action="open-schedule-maintenance-modal">
+                    Schedule
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <div
+              class="history-card-list"
+              data-testid="maintenance-history-list">
+              <article class="card bike-history-card">
+                <div class="bike-history-card__top">
+                  <div>
+                    <h4>Oil &amp; Filter Change</h4>
+                    <p class="muted">Honda Rebel</p>
+                  </div>
+
+                  <span class="odo-pill">1000 km</span>
+                </div>
+
+                <div class="history-lines">
+                  <p><strong>Date:</strong> 2026-03-18</p>
+                  <p><strong>Notes:</strong> Oil and filter replaced.</p>
+                </div>
+              </article>
+
+              <article class="card bike-history-card">
+                <div class="bike-history-card__top">
+                  <div>
+                    <h4>Chain Service</h4>
+                    <p class="muted">Honda Rebel</p>
+                  </div>
+
+                  <span class="odo-pill">850 km</span>
+                </div>
+
+                <div class="history-lines">
+                  <p><strong>Date:</strong> 2026-02-10</p>
+                  <p><strong>Notes:</strong> Cleaned and lubricated chain.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- REPAIRS -->
+        <main
+          class="page-shell is-hidden"
+          id="repairs"
+          data-testid="shell-repairs">
+          <section class="panel" data-testid="panel-repairs">
+            <div class="panel-header">
+              <h2>Repairs</h2>
+              <p>Log repair work, keep issue notes, and track outcomes</p>
+            </div>
+
+            <div class="section-row section-row--page">
+              <div class="view-switch">
+                <button class="switch-btn active" type="button">Current</button>
+                <button class="switch-btn" type="button">History</button>
+              </div>
+
+              <button
+                type="button"
+                data-action="open-add-repair-modal"
+                data-testid="btn-open-add-repair-modal">
+                Add repair
+              </button>
+            </div>
+
+            <div class="job-list">
+              <article class="card job-card">
+                <div class="job-top">
+                  <div>
+                    <h4>Brake lever replacement</h4>
+                    <p class="muted">Yamaha Tracer 9 GT • 12,320 km</p>
+                  </div>
+                  <span class="status done">Resolved</span>
+                </div>
+
+                <p class="job-note">
+                  Old bent lever removed, new lever fitted and tested.
+                </p>
+
+                <div class="job-actions">
+                  <button type="button" class="ghost">View details</button>
+                </div>
+              </article>
+
+              <article class="card job-card">
+                <div class="job-top">
+                  <div>
+                    <h4>Loose battery terminal</h4>
+                    <p class="muted">Honda CB600F Hornet • 42,780 km</p>
+                  </div>
+                  <span class="status in-progress">Monitoring</span>
+                </div>
+
+                <p class="job-note">
+                  Terminal cleaned and tightened. Voltage stable for now.
+                </p>
+
+                <div class="job-actions">
+                  <button type="button" class="ghost">Update</button>
+                  <button type="button" class="ghost danger">Cancel</button>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- GUIDES -->
+        <main
+          class="page-shell is-hidden"
+          id="guides"
+          data-testid="shell-guides">
+          <section class="panel" data-testid="panel-guides">
+            <div class="panel-header">
+              <h2>Guides</h2>
+              <p>Practical maintenance and repair reference guides</p>
+            </div>
+
+            <div class="guide-list">
+              <article class="card guide-card">
+                <div class="job-top">
+                  <div>
+                    <h4>Chain clean and lube</h4>
+                    <p class="muted">Maintenance guide</p>
+                  </div>
+                  <span class="status requested">Guide</span>
+                </div>
+
+                <p class="job-note">
+                  Step-by-step process for cleaning, lubricating, and checking
+                  slack.
+                </p>
+
+                <div class="job-actions">
+                  <button type="button">Open guide</button>
+                </div>
+              </article>
+
+              <article class="card guide-card">
+                <div class="job-top">
+                  <div>
+                    <h4>Brake lever replacement</h4>
+                    <p class="muted">Repair guide</p>
+                  </div>
+                  <span class="status in-progress">Guide</span>
+                </div>
+
+                <p class="job-note">
+                  Fast guide for removing a damaged lever and installing a
+                  replacement.
+                </p>
+
+                <div class="job-actions">
+                  <button type="button">Open guide</button>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- PROFILE -->
+        <main
+          class="page-shell is-hidden"
+          id="profile"
+          data-testid="shell-profile">
+          <section class="panel" data-testid="panel-profile">
+            <div class="panel-header">
+              <h2>Profile</h2>
+              <p>Manage your account and visible profile details</p>
+            </div>
+
+            <div class="profile-single-stack">
+              <article class="card profile-card">
+                <h3>Basic info</h3>
+
+                <form class="form-card">
+                  <label for="profile-username">
+                    Username
+                    <input
+                      id="profile-username"
+                      type="text"
+                      placeholder="petromir" />
+                  </label>
+
+                  <label for="profile-name">
+                    Name
+                    <input
+                      id="profile-name"
+                      type="text"
+                      placeholder="Petromir" />
+                  </label>
+
+                  <label for="profile-email">
+                    Email
+                    <input
+                      id="profile-email"
+                      type="email"
+                      placeholder="you@example.com" />
+                  </label>
+
+                  <button type="button">Save profile</button>
+                </form>
+              </article>
+
+              <article class="card profile-card">
+                <h3>Password</h3>
+
+                <form class="form-card">
+                  <label for="profile-password">
+                    New password
+                    <input
+                      id="profile-password"
+                      type="password"
+                      placeholder="Enter new password" />
+                  </label>
+
+                  <label for="profile-confirm-password">
+                    Confirm password
+                    <input
+                      id="profile-confirm-password"
+                      type="password"
+                      placeholder="Repeat new password" />
+                  </label>
+
+                  <button type="button">Update password</button>
+                </form>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- MODALS -->
+      <div class="modal-overlay is-hidden" id="modal-add-bike">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Add bike</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-close-modal="modal-add-bike">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card">
+            <label for="bike-make">
+              Make
+              <input id="bike-make" type="text" placeholder="Yamaha" />
+            </label>
+
+            <label for="bike-model">
+              Model
+              <input id="bike-model" type="text" placeholder="Tracer 9 GT" />
+            </label>
+
+            <label for="bike-year">
+              Year
+              <input id="bike-year" type="number" placeholder="2021" />
+            </label>
+
+            <label for="bike-odometer">
+              Current odometer
+              <input id="bike-odometer" type="number" placeholder="12480" />
+            </label>
+
+            <button type="button">Add bike</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-add-maintenance">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Add maintenance</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-close-modal="modal-add-maintenance">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card">
+            <label for="maintenance-bike">
+              Bike
+              <select id="maintenance-bike">
+                <option>Select bike</option>
+              </select>
+            </label>
+
+            <label for="maintenance-type">
+              Service type
+              <select id="maintenance-type">
+                <option>Select service type</option>
+              </select>
+            </label>
+
+            <label for="maintenance-note">
+              Note
+              <textarea
+                id="maintenance-note"
+                rows="4"
+                placeholder="What is this maintenance item?"></textarea>
+            </label>
+
+            <button type="button">Save maintenance</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-schedule-maintenance">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Schedule maintenance</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-close-modal="modal-schedule-maintenance">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card">
+            <label for="schedule-next-date">
+              Next due date
+              <input id="schedule-next-date" type="date" />
+            </label>
+
+            <label for="schedule-next-odo">
+              Next due odometer
+              <input id="schedule-next-odo" type="number" placeholder="13000" />
+            </label>
+
+            <label for="schedule-note">
+              Note
+              <textarea
+                id="schedule-note"
+                rows="4"
+                placeholder="Optional scheduling note"></textarea>
+            </label>
+
+            <button type="button">Save schedule</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-log-maintenance">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Log maintenance</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-close-modal="modal-log-maintenance">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card">
+            <label for="log-maintenance-date">
+              Date
+              <input id="log-maintenance-date" type="date" />
+            </label>
+
+            <label for="log-maintenance-odo">
+              Odometer
+              <input
+                id="log-maintenance-odo"
+                type="number"
+                placeholder="12480" />
+            </label>
+
+            <label for="log-maintenance-note">
+              Work performed
+              <textarea
+                id="log-maintenance-note"
+                rows="4"
+                placeholder="What was done?"></textarea>
+            </label>
+
+            <button type="button">Save log</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-add-repair">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Add repair</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-close-modal="modal-add-repair">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card">
+            <label for="repair-bike">
+              Bike
+              <select id="repair-bike">
+                <option>Select bike</option>
+              </select>
+            </label>
+
+            <label for="repair-title">
+              Repair title
+              <input
+                id="repair-title"
+                type="text"
+                placeholder="Brake lever replacement" />
+            </label>
+
+            <label for="repair-odometer">
+              Odometer
+              <input id="repair-odometer" type="number" placeholder="0" />
+            </label>
+
+            <label for="repair-note">
+              Issue / result
+              <textarea
+                id="repair-note"
+                rows="4"
+                placeholder="Describe the problem and the fix"></textarea>
+            </label>
+
+            <button type="button">Save repair</button>
+          </form>
+        </div>
+      </div>
+      <footer class="footer" data-testid="app-footer">
+        © 2026 Mechanizard
+      </footer>
+    </div>
+
+    <script>
+      const menuButton = document.querySelector(
+        '[data-testid="btn-mobile-menu"]',
+      );
+      const mobileMenu = document.querySelector('[data-testid="mobile-menu"]');
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.contains('is-hidden');
+          mobileMenu.classList.toggle('is-hidden');
+          menuButton.setAttribute('aria-expanded', String(isHidden));
+        });
+      }
+
+      const openers = {
+        '[data-action="open-add-bike-modal"]': 'modal-add-bike',
+        '[data-action="open-add-maintenance-modal"]': 'modal-add-maintenance',
+        '[data-action="open-schedule-maintenance-modal"]':
+          'modal-schedule-maintenance',
+        '[data-action="open-log-maintenance-modal"]': 'modal-log-maintenance',
+        '[data-action="open-add-repair-modal"]': 'modal-add-repair',
+      };
+
+      Object.entries(openers).forEach(([selector, modalId]) => {
+        document.querySelectorAll(selector).forEach((button) => {
+          button.addEventListener('click', () => {
+            document.getElementById(modalId)?.classList.remove('is-hidden');
+          });
+        });
+      });
+
+      document.querySelectorAll('.modal-close').forEach((button) => {
+        button.addEventListener('click', () => {
+          const modalId = button.getAttribute('data-close-modal');
+          if (modalId) {
+            document.getElementById(modalId)?.classList.add('is-hidden');
+          }
+        });
+      });
+
+      document.querySelectorAll('.modal-overlay').forEach((overlay) => {
+        overlay.addEventListener('click', (event) => {
+          if (event.target === overlay) {
+            overlay.classList.add('is-hidden');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
