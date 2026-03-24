@@ -1,16 +1,16 @@
-# Mechanizard
+# MechaniZard
 
-Mechanizard is an app for motorcycle owners who do their own maintenance and repairs.
+MechaniZard is a web app for motorcycle owners who do their own maintenance and repairs.
 
 ## Current direction
 
-Mechanizard v1 is focused on motorcycles only.
+MechaniZard v1 is focused on motorcycles only.
 
 Core areas:
 
 - Garage
-- Maintenance logs
-- Repair logs
+- Maintenance
+- Repairs
 - Guides
 - Profile
 
@@ -32,19 +32,18 @@ Core areas:
 ### Maintenance
 
 - Create maintenance logs
-- View recent maintenance entries
+- View current maintenance items
 - View maintenance history
 
 ### Repairs
 
 - Create repair logs
-- View recent repair entries
+- View current repair entries
 - View repair history
 
 ### Guides
 
-- Static maintenance guides
-- Static repair guides
+- Experimental AI-assisted guide generation based on selected bike data and user task description
 
 ### Profile
 
@@ -68,9 +67,9 @@ Planned stack:
 
 ## Project status
 
-This project is currently in early UI structure and styling phase.
+This project is currently in the early UI structure and styling phase.
 
-The current focus is:
+Current focus:
 
 1. Static HTML structure
 2. Shared CSS system
@@ -83,16 +82,16 @@ The current focus is:
 
 ## Design direction
 
-Mechanizard is being designed as:
+MechaniZard is being designed as:
 
-- desktop-first
-- dark UI
-- glassy / modern panels
+- desktop-first, with mobile support planned later
+- dark UI first, light theme later
 - practical and structured, not flashy
+- clean cards, clear actions, and simple flows
 
 ## Why this project exists
 
-This project is meant to help me practice building a more realistic app end-to-end while keeping scope under control.
+This project is meant to help me build a more realistic app end-to-end while keeping scope under control.
 
 It also serves as a long-running portfolio project covering:
 
@@ -106,5 +105,6 @@ It also serves as a long-running portfolio project covering:
 
 ## Notes
 
-This is an active work in progress.  
-The scope will be expanded carefully and only after each foundation layer is stable.
+This is an active work in progress.
+
+The scope will be expanded carefully only after each foundation layer is stable.
