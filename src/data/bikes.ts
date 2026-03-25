@@ -13,11 +13,4 @@ export const bikes = [
     year: 2022,
     odo: 2000,
   },
-  {
-    id: '3',
-    make: 'Suzuki',
-    model: 'GSXR1000',
-    year: 2023,
-    odo: 3000,
-  },
 ];

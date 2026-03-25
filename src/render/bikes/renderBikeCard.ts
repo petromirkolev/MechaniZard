@@ -14,15 +14,15 @@ export function renderBikeCard(bike: Bike): string {
       </button>
 
       <div class="garage-bike-card__footer">
-        <button type="button" class="icon-action icon-action--edit" data-action="edit-bike" aria-label="Edit bike">
+        <button type="button" class="icon-action icon-action--edit" data-action="open-edit-bike-modal" aria-label="Edit bike">
           <img src="./src/assets/icons/icon-edit-glyph.svg" alt="" />
         </button>
 
-        <button type="button" class="icon-action icon-action--log" data-action="log-odo" aria-label="Log current odometer">
+        <button type="button" class="icon-action icon-action--log" data-action="open-log-odo-modal" aria-label="Log current odometer">
           <img src="./src/assets/icons/icon-log-odo-glyph.svg" alt="" />
         </button>
 
-        <button type="button" class="icon-action icon-action--delete" data-action="delete-bike" aria-label="Delete bike">
+        <button type="button" class="icon-action icon-action--delete" data-action="open-delete-bike-modal" aria-label="Delete bike">
           <img src="./src/assets/icons/icon-delete-glyph.svg" alt="" />
         </button>
       </div>

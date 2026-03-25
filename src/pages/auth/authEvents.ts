@@ -1,1 +1,3 @@
-export function initMobileMenu(): void {}
+export function loginUser() {}
+
+export function registerUser() {}

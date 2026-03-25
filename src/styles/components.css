@@ -398,6 +398,22 @@
   padding: 0;
 }
 
+.modal-confirm {
+  background: var(--accent-2);
+}
+
+.modal-reject {
+  background: var(--danger);
+}
+
+.add-button {
+  background: var(--accent-2);
+}
+
+#modal-add-bike-text {
+  text-align: center;
+}
+
 .footer {
   display: flex;
   justify-content: center;

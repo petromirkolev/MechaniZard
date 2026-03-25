@@ -234,6 +234,7 @@
 
               <button
                 type="button"
+                class="add-button"
                 data-action="open-add-bike-modal"
                 data-testid="btn-open-add-bike-modal">
                 Add Motorcycle
@@ -666,33 +667,162 @@
             <button
               type="button"
               class="ghost modal-close"
-              data-close-modal="modal-add-bike">
+              data-action="close-add-bike-modal">
               ✕
             </button>
           </div>
 
-          <form class="form-card">
+          <form class="form-card" data-testid="add-bike-form">
             <label for="bike-make">
               Make
-              <input id="bike-make" type="text" placeholder="Yamaha" />
+              <input
+                id="add-bike-make"
+                type="text"
+                name="make"
+                placeholder="Yamaha" />
             </label>
 
             <label for="bike-model">
               Model
-              <input id="bike-model" type="text" placeholder="Tracer 9 GT" />
+              <input
+                id="add-bike-model"
+                type="text"
+                name="model"
+                placeholder="Tracer 9 GT" />
             </label>
 
             <label for="bike-year">
               Year
-              <input id="bike-year" type="number" placeholder="2021" />
+              <input
+                id="add-bike-year"
+                type="number"
+                name="year"
+                placeholder="2021" />
             </label>
 
             <label for="bike-odometer">
               Current odometer
-              <input id="bike-odometer" type="number" placeholder="12480" />
+              <input
+                id="add-bike-odometer"
+                type="number"
+                name="odo"
+                placeholder="12480" />
             </label>
 
-            <button type="button">Add bike</button>
+            <button type="button" data-action="add-bike-submit">
+              Add bike
+            </button>
+            <p id="modal-add-bike-text" data-testid="modal-add-bike-text"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-edit-bike">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Edit bike</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-action="close-edit-bike-modal">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card" data-testid="edit-bike-form">
+            <label for="bike-make">
+              Make
+              <input
+                id="edit-bike-make"
+                type="text"
+                name="make"
+                placeholder="Yamaha" />
+            </label>
+
+            <label for="bike-model">
+              Model
+              <input
+                id="edit-bike-model"
+                type="text"
+                name="model"
+                placeholder="Tracer 9 GT" />
+            </label>
+
+            <label for="bike-year">
+              Year
+              <input
+                id="edit-bike-year"
+                type="number"
+                name="year"
+                placeholder="2021" />
+            </label>
+
+            <label for="bike-odometer">
+              Current odometer
+              <input
+                id="edit-bike-odometer"
+                type="number"
+                name="odo"
+                placeholder="12480" />
+            </label>
+
+            <button type="button" data-action="edit-bike-submit">
+              Edit bike
+            </button>
+            <p id="modal-edit-bike-text" data-testid="modal-edit-bike-text"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-log-odo">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Log current odo</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-action="close-log-odo-modal">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card" data-testid="log-odo-form">
+            <input id="log-bike-odometer" type="number" name="odo" />
+
+            <button type="button" data-action="log-odo-submit">Log odo</button>
+            <p id="modal-log-odo-text" data-testid="modal-log-odo-text"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay is-hidden" id="modal-delete-bike">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Delete current bike?</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-action="close-delete-bike-modal">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card" data-testid="delete-bike-form">
+            <button
+              type="button"
+              class="modal-confirm"
+              data-action="confirm-bike-delete">
+              Confirm
+            </button>
+            <button
+              type="button"
+              class="modal-reject"
+              data-action="reject-bike-delete">
+              Decline
+            </button>
+            <p
+              id="modal-delete-bike-text"
+              data-testid="modal-delete-bike-text"></p>
           </form>
         </div>
       </div>
@@ -861,54 +991,5 @@
         © 2026 MechaniZard
       </footer>
     </div>
-
-    <script>
-      const menuButton = document.querySelector(
-        '[data-testid="btn-mobile-menu"]',
-      );
-      const mobileMenu = document.querySelector('[data-testid="mobile-menu"]');
-
-      if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => {
-          const isHidden = mobileMenu.classList.contains('is-hidden');
-          mobileMenu.classList.toggle('is-hidden');
-          menuButton.setAttribute('aria-expanded', String(isHidden));
-        });
-      }
-
-      const openers = {
-        '[data-action="open-add-bike-modal"]': 'modal-add-bike',
-        '[data-action="open-add-maintenance-modal"]': 'modal-add-maintenance',
-        '[data-action="open-schedule-maintenance-modal"]':
-          'modal-schedule-maintenance',
-        '[data-action="open-log-maintenance-modal"]': 'modal-log-maintenance',
-        '[data-action="open-add-repair-modal"]': 'modal-add-repair',
-      };
-
-      Object.entries(openers).forEach(([selector, modalId]) => {
-        document.querySelectorAll(selector).forEach((button) => {
-          button.addEventListener('click', () => {
-            document.getElementById(modalId)?.classList.remove('is-hidden');
-          });
-        });
-      });
-
-      document.querySelectorAll('.modal-close').forEach((button) => {
-        button.addEventListener('click', () => {
-          const modalId = button.getAttribute('data-close-modal');
-          if (modalId) {
-            document.getElementById(modalId)?.classList.add('is-hidden');
-          }
-        });
-      });
-
-      document.querySelectorAll('.modal-overlay').forEach((overlay) => {
-        overlay.addEventListener('click', (event) => {
-          if (event.target === overlay) {
-            overlay.classList.add('is-hidden');
-          }
-        });
-      });
-    </script>
   </body>
 </html>

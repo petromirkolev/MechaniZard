@@ -1,7 +1,26 @@
 export const dom = {
+  // Topbar
+  topbar: document.querySelector<HTMLElement>('[data-testid="topbar"]'),
+
   // Screens
   authScreen: document.querySelector<HTMLElement>('.auth-view'),
-  appScreen: document.querySelector<HTMLElement>('.app-view'),
+  garageScreen: document.querySelector<HTMLElement>(
+    '[data-testid="shell-garage"]',
+  ),
+  maintenanceScreen: document.querySelector<HTMLElement>(
+    '[data-testid="shell-maintenance"]',
+  ),
+
+  // Forms
+  addBikeForm: document.querySelector<HTMLFormElement>(
+    '[data-testid="add-bike-form"]',
+  ),
+  editBikeForm: document.querySelector<HTMLFormElement>(
+    '[data-testid="edit-bike-form"]',
+  ),
+  logOdoForm: document.querySelector<HTMLFormElement>(
+    '[data-testid="log-odo-form"]',
+  ),
 
   // Login
   loginForm: document.querySelector<HTMLElement>('[data-testid="form-login"]'),
@@ -21,8 +40,16 @@ export const dom = {
     '[data-testid="btn-register"]',
   ),
 
-  // Garage grid
+  // Garage
   garageGrid: document.querySelector<HTMLElement>(
     '[data-testid="garage-grid"]',
+  ),
+
+  // Maintenance
+  maintenanceShowCurrent: document.querySelector<HTMLElement>(
+    '[data-testid="maintenance-current-list"]',
+  ),
+  maintenanceShowHistory: document.querySelector<HTMLElement>(
+    '[data-testid="maintenance-history-list"]',
   ),
 };

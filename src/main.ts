@@ -5,16 +5,12 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/pages.css';
 
-import { initMobileMenu } from './pages/auth/authEvents';
-import { initModals } from './modals/modalState';
-import { initGaragePage } from './pages/garage/garageEvents';
 import { initRouter } from './render/router';
+import { renderLoginPage } from './pages/auth/authView';
 
 function bootstrapApp(): void {
   initRouter();
-  initMobileMenu();
-  initModals();
-  initGaragePage();
+  renderLoginPage();
 }
 
 bootstrapApp();
