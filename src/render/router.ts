@@ -1,15 +1,15 @@
 import { dom } from '../utils/dom';
 import type { Action } from '../types/action';
 import { renderLoginPage, renderRegisterPage } from '../pages/auth/authView';
-import {
-  editBike,
-  logBikeOdo,
-  deleteBike,
-  addBike,
-} from '../pages/garage/garageEvents';
+import { editBike, logOdo } from '../pages/garage/garageEvents';
 import { showScreen } from '../utils/show-screen';
-import { readEditBikeForm, readLogOdoForm } from '../utils/forms';
+import {
+  readAddBikeForm,
+  readEditBikeForm,
+  readLogOdoForm,
+} from '../utils/forms';
 import { addBikeModal } from '../modals/addBikeModal';
+import { bikes } from '../data/bikes';
 import { logOdoModal } from '../modals/logOdoModal';
 import { deleteBikeModal } from '../modals/deleteBikeModal';
 import { editBikeModal } from '../modals/editBikeModal';
@@ -17,15 +17,14 @@ import { renderGarageView } from '../pages/garage/garageView';
 import {
   renderMaintenanceBikeSelect,
   renderMaintenanceView,
-} from '../pages/maintenance/maintenanceView';
-import { logMaintenanceModal } from '../modals/logMaintenanceModal';
-import { scheduleMaintenanceModal } from '../modals/scheduleMaintenanceModal';
-import {
   showCurrent,
   showHistory,
-} from '../pages/maintenance/maintenanceEvents';
+} from '../pages/maintenance/maintenanceView';
+import { renderMaintenanceHeader } from './maintenance/renderMaintenanceHeader';
+import { logMaintenanceModal } from '../modals/logMaintenanceModal';
+import { scheduleMaintenanceModal } from '../modals/scheduleMaintenanceModal';
 
-export function router(): void {
+export function initRouter(): void {
   document.addEventListener('click', async (e: MouseEvent) => {
     const target = e.target as HTMLElement;
 
@@ -73,18 +72,6 @@ export function router(): void {
         renderMaintenanceBikeSelect();
         break;
       }
-      case 'repairs-page': {
-        showScreen('repairs');
-        break;
-      }
-      case 'guides-page': {
-        showScreen('guides');
-        break;
-      }
-      case 'profile-page': {
-        showScreen('profile');
-        break;
-      }
       case 'logout': {
         showScreen('auth');
         renderLoginPage();
@@ -94,8 +81,10 @@ export function router(): void {
       /* Garage page */
       case 'add-bike-submit': {
         const form = (dom.addBikeForm as HTMLFormElement) || null;
+        const bike = await readAddBikeForm(form);
+        const id = String(Math.round(Math.random() * 10));
 
-        await addBike(form);
+        bikes.push({ id, ...bike });
 
         form.reset();
         addBikeModal.close();
@@ -119,7 +108,7 @@ export function router(): void {
         const form = (dom.logOdoForm as HTMLFormElement) || null;
         const odo = await readLogOdoForm(form);
 
-        logBikeOdo(bikeId, odo);
+        logOdo(bikeId, odo);
 
         form.reset();
         logOdoModal.close();
@@ -130,7 +119,9 @@ export function router(): void {
       case 'confirm-bike-delete': {
         const bikeId = el.dataset.bikeid;
 
-        deleteBike(bikeId);
+        const index = bikes.findIndex((bike) => bike.id === bikeId);
+
+        bikes.splice(index, 1);
 
         deleteBikeModal.close();
         renderGarageView();
@@ -143,6 +134,7 @@ export function router(): void {
       }
       case 'open-bike-maintenance': {
         showScreen('maintenance');
+        renderMaintenanceBikeSelect();
         renderMaintenanceView(bikeId);
         break;
       }
@@ -157,7 +149,8 @@ export function router(): void {
         break;
       }
 
-      /* Add bike modal */
+      /* Modals */
+      /** Add bike modal */
       case 'open-add-bike-modal': {
         addBikeModal.open();
         break;
@@ -167,7 +160,7 @@ export function router(): void {
         break;
       }
 
-      /* Edit bike modal */
+      /** Edit bike modal */
       case 'open-edit-bike-modal': {
         const bikeId = el.dataset.bikeid;
         console.log(bikeId);
@@ -180,7 +173,7 @@ export function router(): void {
         break;
       }
 
-      /* Log odo modal */
+      /** Log odo modal */
       case 'open-log-odo-modal': {
         const bikeId = el.dataset.bikeid;
         logOdoModal.open(bikeId);
@@ -191,7 +184,7 @@ export function router(): void {
         break;
       }
 
-      /* Delete bike modal */
+      /** Delete bike modal */
       case 'open-delete-bike-modal': {
         const bikeId = el.dataset.bikeid;
         deleteBikeModal.open(bikeId);
@@ -202,7 +195,7 @@ export function router(): void {
         break;
       }
 
-      /* Log maintenance modal */
+      /** Log maintenance modal */
       case 'open-log-maintenance-modal': {
         logMaintenanceModal.open();
         break;
@@ -212,7 +205,7 @@ export function router(): void {
         break;
       }
 
-      /* Schedule maintenance modal */
+      /** Schedule maintenance modal */
       case 'open-schedule-maintenance-modal': {
         scheduleMaintenanceModal.open();
         break;
