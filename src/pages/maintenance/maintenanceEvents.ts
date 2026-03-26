@@ -15,6 +15,14 @@ import {
 } from '../../utils/forms';
 
 export function initMaintenanceEvents() {
+  (dom.maintenanceSelectBikeContainer as HTMLSelectElement).addEventListener(
+    'change',
+    () => {
+      const bikeId = dom.maintenanceSelectBikeContainer?.value;
+      renderMaintenanceView(bikeId);
+    },
+  );
+
   document.addEventListener('click', async (e: MouseEvent) => {
     const target = e.target as HTMLElement;
 

@@ -35,12 +35,6 @@ export function renderMaintenanceBikeSelect() {
     option.innerText = `${bike.year} ${bike.make} ${bike.model}`;
     dom.maintenanceSelectBikeContainer?.appendChild(option);
   });
-
-  dom.maintenanceSelectBikeContainer.addEventListener('change', () => {
-    const bikeId = dom.maintenanceSelectBikeContainer?.value;
-
-    renderMaintenanceView(bikeId);
-  });
 }
 
 export function showMaintenanceCurrent() {
