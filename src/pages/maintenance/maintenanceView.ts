@@ -21,7 +21,7 @@ export function renderMaintenanceView(bikeId: string | undefined) {
   dom.maintenanceHeaderContainer.innerHTML = '';
   dom.maintenanceHeaderContainer.innerHTML = maintenanceHeaderContent;
 
-  showCurrent();
+  showMaintenanceCurrent();
 }
 
 export function renderMaintenanceBikeSelect() {
@@ -43,38 +43,30 @@ export function renderMaintenanceBikeSelect() {
   });
 }
 
-export function showCurrent() {
-  document
-    .querySelector('[data-action="show-maintenance-current"]')
-    ?.classList.add('active');
-  document
-    .querySelector('[data-action="show-maintenance-history"]')
-    ?.classList.remove('active');
-  dom.maintenanceShowCurrent?.classList.remove('is-hidden');
-  dom.maintenanceShowHistory?.classList.add('is-hidden');
+export function showMaintenanceCurrent() {
+  dom.maintenanceShowCurrent?.classList.add('active');
+  dom.maintenanceShowHistory?.classList.remove('active');
+  dom.maintenanceCurrentList?.classList.remove('is-hidden');
+  dom.maintenanceHistoryList?.classList.add('is-hidden');
 
-  (dom.maintenanceShowCurrent as HTMLElement).innerHTML = '';
+  (dom.maintenanceCurrentList as HTMLElement).innerHTML = '';
 
   maintenanceItems.forEach((item) => {
     const maintenanceCard = renderMaintenanceCard(item);
-    (dom.maintenanceShowCurrent as HTMLElement).innerHTML += maintenanceCard;
+    (dom.maintenanceCurrentList as HTMLElement).innerHTML += maintenanceCard;
   });
 }
 
-export function showHistory() {
-  document
-    .querySelector('[data-action="show-maintenance-current"]')
-    ?.classList.remove('active');
-  document
-    .querySelector('[data-action="show-maintenance-history"]')
-    ?.classList.add('active');
-  dom.maintenanceShowHistory?.classList.remove('is-hidden');
-  dom.maintenanceShowCurrent?.classList.add('is-hidden');
+export function showMaintenanceHistory() {
+  dom.maintenanceShowCurrent?.classList.remove('active');
+  dom.maintenanceShowHistory?.classList.add('active');
+  dom.maintenanceCurrentList?.classList.add('is-hidden');
+  dom.maintenanceHistoryList?.classList.remove('is-hidden');
 
-  (dom.maintenanceShowHistory as HTMLElement).innerHTML = '';
+  (dom.maintenanceHistoryList as HTMLElement).innerHTML = '';
 
   historyItems.forEach((item) => {
     const historyCard = renderHistoryCard(item);
-    (dom.maintenanceShowHistory as HTMLElement).innerHTML += historyCard;
+    (dom.maintenanceHistoryList as HTMLElement).innerHTML += historyCard;
   });
 }

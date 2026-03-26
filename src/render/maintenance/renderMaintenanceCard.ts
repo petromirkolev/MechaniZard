@@ -2,7 +2,7 @@ import type { MaintenanceItem } from '../../types/maintenance';
 
 export function renderMaintenanceCard(item: MaintenanceItem) {
   const maintenanceCard = `
-              <article class="card maintenance-item-card" data-bikeid="${item.bike_id}">
+              <article class="card maintenance-item-card" data-bikeid="TBD">
                 <h3>${item.name}</h3>
                 <p class="muted">${item.description}</p>
 
@@ -15,7 +15,7 @@ export function renderMaintenanceCard(item: MaintenanceItem) {
                   <button
                     type="button"
                     data-action="open-log-maintenance-modal">
-                    Log Service
+                    Log
                   </button>
                   <button
                     type="button"

@@ -22,9 +22,9 @@ const SCREENS: Record<Screen, HTMLElement | null> = {
 const NAV_LINKS = {
   garage: dom.navGarage,
   maintenance: dom.navMaintenance,
-  repairs: dom.repairsScreen,
-  guides: dom.guidesScreen,
-  profile: dom.profileScreen,
+  repairs: dom.navRepairs,
+  guides: dom.navGuides,
+  profile: dom.navProfile,
 };
 
 function setHidden(el: HTMLElement | null, hidden: boolean) {

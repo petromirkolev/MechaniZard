@@ -1,5 +1,4 @@
 export type MaintenanceItem = {
-  bike_id: string;
   name: string;
   description: string;
 };

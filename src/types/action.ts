@@ -15,35 +15,32 @@ export type Action =
 
   /* Garage */
   | 'add-bike-submit'
+  | 'edit-bike-submit'
+  | 'log-odo-submit'
+  | 'add-log-submit'
+  | 'add-schedule-submit'
   | 'open-bike-maintenance'
-
-  /* Maintenance */
-  | 'show-maintenance-current'
-  | 'show-maintenance-history'
-
-  /* Modals */
-  /** Add bike modal */
   | 'open-add-bike-modal'
   | 'close-add-bike-modal'
-
-  /** Edit bike modal */
   | 'open-edit-bike-modal'
-  | 'edit-bike-submit'
   | 'close-edit-bike-modal'
-
-  /** Log odo modal */
   | 'open-log-odo-modal'
-  | 'log-odo-submit'
   | 'close-log-odo-modal'
-
-  /** Delete bike modal */
   | 'open-delete-bike-modal'
   | 'close-delete-bike-modal'
   | 'confirm-bike-delete'
   | 'reject-bike-delete'
 
-  /** Log maintenance modal */
+  /* Maintenance */
+  | 'show-maintenance-current'
+  | 'show-maintenance-history'
   | 'open-log-maintenance-modal'
   | 'close-log-maintenance-modal'
   | 'open-schedule-maintenance-modal'
-  | 'close-schedule-maintenance-modal';
+  | 'close-schedule-maintenance-modal'
+
+  /* Repairs */
+  | 'show-repairs-current'
+  | 'show-repairs-history'
+  | 'open-add-repair-modal'
+  | 'close-add-repair-modal';

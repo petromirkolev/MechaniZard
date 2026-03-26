@@ -114,9 +114,10 @@
 }
 
 .job-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
   gap: 0.8rem;
-  flex-wrap: wrap;
   padding-top: 0.15rem;
 }
 
@@ -126,6 +127,18 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.profile-single-stack {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.profile-single-stack > * {
+  flex: 1 1 320px;
+  min-width: 0;
 }
 
 .avatar {

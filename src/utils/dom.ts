@@ -55,6 +55,12 @@ export const dom = {
   logOdoForm: document.querySelector(
     '[data-testid="log-odo-form"]',
   ) as HTMLFormElement | null,
+  logMaintenanceForm: document.querySelector(
+    '[data-testid="log-maintenance-form"]',
+  ) as HTMLFormElement | null,
+  scheduleMaintenanceForm: document.querySelector(
+    '[data-testid="schedule-maintenance-form"]',
+  ) as HTMLFormElement | null,
 
   /* Login */
   gotoLoginButton: document.querySelector(
@@ -81,16 +87,30 @@ export const dom = {
   maintenancePanel: document.querySelector(
     '[data-testid="panel-maintenance"]',
   ) as HTMLElement | null,
-  maintenanceSelectBikeContainer: document.querySelector<HTMLSelectElement>(
+  maintenanceSelectBikeContainer: document.querySelector(
     '[data-testid="bike-select"]',
   ) as HTMLSelectElement | null,
   maintenanceShowCurrent: document.querySelector(
-    '[data-testid="maintenance-current-list"]',
+    '[data-action="show-maintenance-current"]',
   ) as HTMLElement | null,
   maintenanceShowHistory: document.querySelector(
+    '[data-action="show-maintenance-history"]',
+  ) as HTMLElement | null,
+  maintenanceCurrentList: document.querySelector(
+    '[data-testid="maintenance-current-list"]',
+  ) as HTMLElement | null,
+  maintenanceHistoryList: document.querySelector(
     '[data-testid="maintenance-history-list"]',
   ) as HTMLElement | null,
   maintenanceHeaderContainer: document.querySelector(
     '.maintenance-top__grid',
+  ) as HTMLElement | null,
+
+  /* Repairs */
+  repairsShowCurrent: document.querySelector(
+    '[data-action="show-repairs-current"]',
+  ) as HTMLElement | null,
+  repairsShowHistory: document.querySelector(
+    '[data-action="show-repairs-history"]',
   ) as HTMLElement | null,
 };

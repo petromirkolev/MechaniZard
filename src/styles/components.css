@@ -406,6 +406,10 @@
   background: var(--danger);
 }
 
+.add-repair {
+  background: var(--accent-2);
+}
+
 .add-button {
   background: var(--accent-2);
 }

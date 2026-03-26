@@ -1,6 +1,6 @@
 import type { Action } from '../../types/action';
 import { showScreen } from '../../utils/show-screen';
-import { renderLoginPage, renderRegisterPage } from './authView';
+import { renderLoginView, renderRegisterView } from './authView';
 import { renderGarageView } from '../garage/garageView';
 
 export function initAuthEvents() {
@@ -15,11 +15,11 @@ export function initAuthEvents() {
 
     if (action === 'show-login-form') {
       showScreen('auth');
-      renderLoginPage();
+      renderLoginView();
     }
     if (action === 'show-register-form') {
       showScreen('auth');
-      renderRegisterPage();
+      renderRegisterView();
     }
     if (action === 'login') {
       showScreen('garage');

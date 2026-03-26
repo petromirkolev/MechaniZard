@@ -266,7 +266,6 @@
 
             <div class="section-row section-row--page">
               <h3>Maintenance Items</h3>
-
               <div class="view-switch">
                 <button
                   class="switch-btn active"
@@ -305,17 +304,28 @@
           <section class="panel" data-testid="panel-repairs">
             <div class="panel-header">
               <h2>Repairs</h2>
-              <p>Log repair work, keep issue notes, and track outcomes</p>
+              <p>Log upcoming repair jobs or view your repair history</p>
             </div>
 
             <div class="section-row section-row--page">
               <div class="view-switch">
-                <button class="switch-btn active" type="button">Current</button>
-                <button class="switch-btn" type="button">History</button>
+                <button
+                  class="switch-btn active"
+                  type="button"
+                  data-action="show-repairs-current">
+                  Current
+                </button>
+                <button
+                  class="switch-btn"
+                  type="button"
+                  data-action="show-repairs-history">
+                  History
+                </button>
               </div>
 
               <button
                 type="button"
+                class="add-repair"
                 data-action="open-add-repair-modal"
                 data-testid="btn-open-add-repair-modal">
                 Add repair
@@ -373,46 +383,7 @@
               <h2>Guides</h2>
               <p>Practical maintenance and repair reference guides</p>
             </div>
-
-            <div class="guide-list">
-              <article class="card guide-card">
-                <div class="job-top">
-                  <div>
-                    <h4>Chain clean and lube</h4>
-                    <p class="muted">Maintenance guide</p>
-                  </div>
-                  <span class="status requested">Guide</span>
-                </div>
-
-                <p class="job-note">
-                  Step-by-step process for cleaning, lubricating, and checking
-                  slack.
-                </p>
-
-                <div class="job-actions">
-                  <button type="button">Open guide</button>
-                </div>
-              </article>
-
-              <article class="card guide-card">
-                <div class="job-top">
-                  <div>
-                    <h4>Brake lever replacement</h4>
-                    <p class="muted">Repair guide</p>
-                  </div>
-                  <span class="status in-progress">Guide</span>
-                </div>
-
-                <p class="job-note">
-                  Fast guide for removing a damaged lever and installing a
-                  replacement.
-                </p>
-
-                <div class="job-actions">
-                  <button type="button">Open guide</button>
-                </div>
-              </article>
-            </div>
+            <div class="guide-list"></div>
           </section>
         </main>
 
@@ -656,10 +627,10 @@
         </div>
       </div>
 
-      <div class="modal-overlay is-hidden" id="modal-add-maintenance">
+      <div class="modal-overlay is-hidden" id="modal-log-maintenance">
         <div class="modal-card">
           <div class="section-row">
-            <h3>Add maintenance</h3>
+            <h3>Log maintenance</h3>
             <button
               type="button"
               class="ghost modal-close"
@@ -669,15 +640,15 @@
             </button>
           </div>
 
-          <form class="form-card">
+          <form class="form-card" data-testid="log-maintenance-form">
             <label for="log-odo">
               Odo
-              <input type="number" required />
+              <input type="number" name="odo" required />
             </label>
 
             <label for="log-date">
               Date
-              <input type="date" required />
+              <input type="date" name="date" required />
             </label>
 
             <label for="log-note">
@@ -685,11 +656,12 @@
               <textarea
                 id="maintenance-note"
                 rows="4"
+                name="note"
                 placeholder="Any details related to the service"></textarea>
             </label>
 
-            <button type="button" data-action="close-log-maintenance-modal">
-              Save maintenance
+            <button type="button" data-action="add-log-submit">
+              Log maintenance
             </button>
           </form>
         </div>
@@ -708,69 +680,37 @@
             </button>
           </div>
 
-          <form class="form-card">
-            <label for="schedule-next-date">
-              Next due date
-              <input id="schedule-next-date" type="date" />
+          <form class="form-card" data-testid="schedule-maintenance-form">
+            <label for="interval-days">
+              Interval in days
+              <input
+                id="interval-days"
+                name="intervaldays"
+                type="number"
+                placeholder="365" />
             </label>
 
-            <label for="schedule-next-odo">
-              Next due odometer
-              <input id="schedule-next-odo" type="number" placeholder="13000" />
+            <label for="interval-odo">
+              Interval in kms
+              <input
+                id="interval-odo"
+                type="number"
+                name="intervalodo"
+                placeholder="10000" />
             </label>
 
             <label for="schedule-note">
               Note
               <textarea
                 id="schedule-note"
+                name="note"
                 rows="4"
                 placeholder="Optional scheduling note"></textarea>
             </label>
 
-            <button
-              type="button"
-              data-action="close-schedule-maintenance-modal">
-              Save schedule
+            <button type="button" data-action="add-schedule-submit">
+              Add schedule
             </button>
-          </form>
-        </div>
-      </div>
-
-      <div class="modal-overlay is-hidden" id="modal-log-maintenance">
-        <div class="modal-card">
-          <div class="section-row">
-            <h3>Log maintenance</h3>
-            <button
-              type="button"
-              class="ghost modal-close"
-              data-close-modal="modal-log-maintenance">
-              ✕
-            </button>
-          </div>
-
-          <form class="form-card">
-            <label for="log-maintenance-date">
-              Date
-              <input id="log-maintenance-date" type="date" />
-            </label>
-
-            <label for="log-maintenance-odo">
-              Odometer
-              <input
-                id="log-maintenance-odo"
-                type="number"
-                placeholder="12480" />
-            </label>
-
-            <label for="log-maintenance-note">
-              Work performed
-              <textarea
-                id="log-maintenance-note"
-                rows="4"
-                placeholder="What was done?"></textarea>
-            </label>
-
-            <button type="button">Save log</button>
           </form>
         </div>
       </div>
@@ -782,6 +722,7 @@
             <button
               type="button"
               class="ghost modal-close"
+              data-action="close-add-repair-modal"
               data-close-modal="modal-add-repair">
               ✕
             </button>
@@ -800,23 +741,77 @@
               <input
                 id="repair-title"
                 type="text"
+                name="title"
                 placeholder="Brake lever replacement" />
             </label>
 
             <label for="repair-odometer">
               Odometer
-              <input id="repair-odometer" type="number" placeholder="0" />
+              <input
+                id="repair-odometer"
+                type="number"
+                name="odo"
+                placeholder="0" />
             </label>
 
             <label for="repair-note">
               Issue / result
               <textarea
                 id="repair-note"
+                name="note"
                 rows="4"
                 placeholder="Describe the problem and the fix"></textarea>
             </label>
+            <button type="button" data-action="add-repair-submit">
+              Add repair
+            </button>
+          </form>
+        </div>
+      </div>
 
-            <button type="button">Save repair</button>
+      <div class="modal-overlay is-hidden" id="modal-update-repair">
+        <div class="modal-card">
+          <div class="section-row">
+            <h3>Update repair</h3>
+            <button
+              type="button"
+              class="ghost modal-close"
+              data-action="close-update-repair-modal"
+              data-close-modal="modal-update-repair">
+              ✕
+            </button>
+          </div>
+
+          <form class="form-card">
+            <label for="repair-title">
+              Repair title
+              <input
+                id="repair-title"
+                type="text"
+                name="title"
+                placeholder="Brake lever replacement" />
+            </label>
+
+            <label for="repair-odometer">
+              Odometer
+              <input
+                id="repair-odometer"
+                type="number"
+                name="odo"
+                placeholder="0" />
+            </label>
+
+            <label for="repair-note">
+              Issue / result
+              <textarea
+                id="repair-note"
+                name="note"
+                rows="4"
+                placeholder="Describe the problem and the fix"></textarea>
+            </label>
+            <button type="button" data-action="update-repair-submit">
+              Update repair
+            </button>
           </form>
         </div>
       </div>

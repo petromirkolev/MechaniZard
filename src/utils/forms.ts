@@ -42,3 +42,31 @@ export async function readLogOdoForm(form: HTMLFormElement) {
 
   return odo;
 }
+
+export async function readLogMaintenanceForm(form: HTMLFormElement) {
+  const fd = new FormData(form);
+
+  const odo: number = Number(fd.get('odo') ?? null);
+  if (!odo) throw new Error('Odo is required');
+
+  const date: string = String(fd.get('date') ?? '').trim();
+  if (!date) throw new Error('Date is required');
+
+  const note: string = String(fd.get('note') ?? '').trim();
+
+  return { odo, date, note };
+}
+
+export async function readScheduleMaintenanceForm(form: HTMLFormElement) {
+  const fd = new FormData(form);
+
+  const days: number = Number(fd.get('intervaldays') ?? null);
+  if (!days) throw new Error('Date is required');
+
+  const odo: number = Number(fd.get('intervalodo') ?? null);
+  if (!odo) throw new Error('Odo is required');
+
+  const note: string = String(fd.get('note') ?? '').trim();
+
+  return { days, odo, note };
+}
