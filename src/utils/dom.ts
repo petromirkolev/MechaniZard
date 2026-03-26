@@ -61,6 +61,18 @@ export const dom = {
   scheduleMaintenanceForm: document.querySelector(
     '[data-testid="schedule-maintenance-form"]',
   ) as HTMLFormElement | null,
+  addRepairForm: document.querySelector(
+    '[data-testid="add-repair-form"]',
+  ) as HTMLFormElement | null,
+  updateRepairForm: document.querySelector(
+    '[data-testid="update-repair-form"]',
+  ) as HTMLFormElement | null,
+  updateProfileForm: document.querySelector(
+    '[data-testid="update-profile-form"]',
+  ) as HTMLFormElement | null,
+  changePasswordForm: document.querySelector(
+    '[data-testid="change-password-form"]',
+  ) as HTMLFormElement | null,
 
   /* Login */
   gotoLoginButton: document.querySelector(

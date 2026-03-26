@@ -43,4 +43,10 @@ export type Action =
   | 'show-repairs-current'
   | 'show-repairs-history'
   | 'open-add-repair-modal'
-  | 'close-add-repair-modal';
+  | 'close-add-repair-modal'
+  | 'add-repair-submit'
+  | 'update-repair-submit'
+
+  /* Profile */
+  | 'update-profile'
+  | 'update-password';

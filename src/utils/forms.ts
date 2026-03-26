@@ -70,3 +70,62 @@ export async function readScheduleMaintenanceForm(form: HTMLFormElement) {
 
   return { days, odo, note };
 }
+
+export async function readAddRepairForm(form: HTMLFormElement) {
+  const fd = new FormData(form);
+
+  const bike: string = String(fd.get('bike') ?? '').trim();
+
+  const title: string = String(fd.get('repair-title') ?? '').trim();
+  if (!title) throw new Error('Title is required');
+
+  const odo: number = Number(fd.get('repair-odo') ?? null);
+  if (!odo) throw new Error('Odo is required');
+
+  const note: string = String(fd.get('repair-note') ?? '').trim();
+
+  return { bike, title, odo, note };
+}
+
+export async function readUpdateRepairForm(form: HTMLFormElement) {
+  const fd = new FormData(form);
+
+  const title: string = String(fd.get('repair-title') ?? '').trim();
+  if (!title) throw new Error('Title is required');
+
+  const odo: number = Number(fd.get('repair-odo') ?? null);
+  if (!odo) throw new Error('Odo is required');
+
+  const note: string = String(fd.get('repair-note') ?? '').trim();
+
+  return { title, odo, note };
+}
+
+export async function readUpdateProfileForm(form: HTMLFormElement) {
+  const fd = new FormData(form);
+
+  const username: string = String(fd.get('profile-username') ?? '').trim();
+  if (!username) throw new Error('Username is required');
+
+  const name: string = String(fd.get('profile-name') ?? '').trim();
+  if (!name) throw new Error('Name is required');
+
+  const email: string = String(fd.get('profile-email') ?? '').trim();
+  if (!email) throw new Error('Email is required');
+
+  return { username, name, email };
+}
+
+export async function readUpdatePasswordForm(form: HTMLFormElement) {
+  const fd = new FormData(form);
+
+  const password: string = String(fd.get('profile-password') ?? '').trim();
+  if (!password) throw new Error('Password is required');
+
+  const confirmPassword: string = String(
+    fd.get('profile-confirm-password') ?? '',
+  ).trim();
+  if (!confirmPassword) throw new Error('Confirm password is required');
+
+  return { password, confirmPassword };
+}

@@ -348,6 +348,7 @@
 
                 <div class="job-actions">
                   <button type="button" class="ghost">View details</button>
+                  <button type="button" class="ghost danger">Delete</button>
                 </div>
               </article>
 
@@ -395,18 +396,19 @@
           <section class="panel" data-testid="panel-profile">
             <div class="panel-header">
               <h2>Profile</h2>
-              <p>Manage your account and visible profile details</p>
+              <p>Manage your account and profile details</p>
             </div>
 
             <div class="profile-single-stack">
               <article class="card profile-card">
                 <h3>Basic info</h3>
 
-                <form class="form-card">
+                <form class="form-card" data-testid="update-profile-form">
                   <label for="profile-username">
                     Username
                     <input
                       id="profile-username"
+                      name="profile-username"
                       type="text"
                       placeholder="petromir" />
                   </label>
@@ -415,6 +417,7 @@
                     Name
                     <input
                       id="profile-name"
+                      name="profile-name"
                       type="text"
                       placeholder="Petromir" />
                   </label>
@@ -423,22 +426,26 @@
                     Email
                     <input
                       id="profile-email"
+                      name="profile-email"
                       type="email"
                       placeholder="you@example.com" />
                   </label>
 
-                  <button type="button">Save profile</button>
+                  <button type="button" data-action="update-profile">
+                    Update profile
+                  </button>
                 </form>
               </article>
 
               <article class="card profile-card">
                 <h3>Password</h3>
 
-                <form class="form-card">
+                <form class="form-card" data-testid="change-password-form">
                   <label for="profile-password">
                     New password
                     <input
                       id="profile-password"
+                      name="profile-password"
                       type="password"
                       placeholder="Enter new password" />
                   </label>
@@ -447,11 +454,14 @@
                     Confirm password
                     <input
                       id="profile-confirm-password"
+                      name="profile-confirm-password"
                       type="password"
                       placeholder="Repeat new password" />
                   </label>
 
-                  <button type="button">Update password</button>
+                  <button type="button" data-action="update-password">
+                    Update password
+                  </button>
                 </form>
               </article>
             </div>
@@ -728,10 +738,10 @@
             </button>
           </div>
 
-          <form class="form-card">
+          <form class="form-card" data-testid="add-repair-form">
             <label for="repair-bike">
               Bike
-              <select id="repair-bike">
+              <select name="bike" id="repair-bike">
                 <option>Select bike</option>
               </select>
             </label>
@@ -741,7 +751,7 @@
               <input
                 id="repair-title"
                 type="text"
-                name="title"
+                name="repair-title"
                 placeholder="Brake lever replacement" />
             </label>
 
@@ -750,7 +760,7 @@
               <input
                 id="repair-odometer"
                 type="number"
-                name="odo"
+                name="repair-odo"
                 placeholder="0" />
             </label>
 
@@ -758,7 +768,7 @@
               Issue / result
               <textarea
                 id="repair-note"
-                name="note"
+                name="repair-note"
                 rows="4"
                 placeholder="Describe the problem and the fix"></textarea>
             </label>
@@ -782,13 +792,13 @@
             </button>
           </div>
 
-          <form class="form-card">
+          <form class="form-card" data-testid="update-repair-form">
             <label for="repair-title">
               Repair title
               <input
                 id="repair-title"
                 type="text"
-                name="title"
+                name="repair-title"
                 placeholder="Brake lever replacement" />
             </label>
 
@@ -797,7 +807,7 @@
               <input
                 id="repair-odometer"
                 type="number"
-                name="odo"
+                name="repair-odo"
                 placeholder="0" />
             </label>
 
@@ -805,7 +815,7 @@
               Issue / result
               <textarea
                 id="repair-note"
-                name="note"
+                name="repair-note"
                 rows="4"
                 placeholder="Describe the problem and the fix"></textarea>
             </label>

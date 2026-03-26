@@ -11,6 +11,7 @@ import { initGarageEvents } from './pages/garage/garageEvents';
 import { initMaintenanceEvents } from './pages/maintenance/maintenanceEvents';
 import { initRepairEvents } from './pages/repairs/repairsEvents';
 import { renderLoginView } from './pages/auth/authView';
+import { initProfileEvents } from './pages/profile/profileEvents';
 
 function initMobileMenu(): void {
   const menuButton = document.querySelector('[data-testid="btn-mobile-menu"]');
@@ -32,6 +33,7 @@ function bootstrapApp(): void {
   initGarageEvents();
   initMaintenanceEvents();
   initRepairEvents();
+  initProfileEvents();
   renderLoginView();
 }
 
